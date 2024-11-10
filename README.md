@@ -1,4 +1,4 @@
-# <div style="text-align: center;">The Loan Approval System</div>
+# The Loan Approval System
 
 <img src="./assets/architecture.png" style="width: 100%; height: 400px;" />
 
