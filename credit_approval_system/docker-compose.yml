@@ -1,0 +1,29 @@
+services:
+  web:
+    build: .
+    command: >
+      sh -c "python manage.py migrate && if [ \"$(python manage.py showmigrations app --plan | grep '[X]' | wc -l)\" -eq 0 ]; then python manage.py shell -c 'from app.tasks import ingest_customer_data, ingest_loan_data; ingest_customer_data(\"data/customer_data.xlsx\"); ingest_loan_data(\"data/loan_data.xlsx\")'; fi && python manage.py runserver 0.0.0.0:8000"
+    volumes:
+      - .:/code
+    ports:
+      - "8000:8000"
+    depends_on:
+      - db
+      - redis
+  db:
+    image: postgres
+    environment:
+      POSTGRES_DB: credit_approval_db
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 12345
+    ports:
+      - "5432:5432"
+  redis:
+    image: redis:alpine
+  celery:
+    build: .
+    command: celery -A credit_approval_system worker --loglevel=info
+    user: "1000:1000"
+    depends_on:
+      - db
+      - redis
