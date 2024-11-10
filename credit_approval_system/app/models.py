@@ -7,8 +7,8 @@ class Customer(models.Model):
     phone_number = models.CharField(max_length=15, unique=True)
     monthly_salary = models.FloatField()
     approved_limit = models.FloatField()
-    current_debt = models.FloatField(default=0.0)
-    age = models.IntegerField(null=True, blank=True)
+    current_debt = models.FloatField()
+    age = models.IntegerField()
 
 class Loan(models.Model):
     loan_id = models.AutoField(primary_key=True)
@@ -17,6 +17,6 @@ class Loan(models.Model):
     tenure = models.IntegerField()
     interest_rate = models.FloatField()
     monthly_repayment = models.FloatField()
-    emis_paid_on_time = models.BooleanField(default=False,null=True)
+    emis_paid_on_time = models.BooleanField(default=False)
     start_date = models.DateField()
     end_date = models.DateField()

@@ -17,15 +17,18 @@ def register_customer(request):
             status=status.HTTP_400_BAD_REQUEST
         )
 
-    # Create new customer
+    # Create new customer with current debt calculation
     customer = Customer(
         first_name=data['first_name'],
         last_name=data['last_name'],
         age=data['age'],
         phone_number=data['phone_number'],
         monthly_salary=data['monthly_income'],
-        approved_limit=round(data['monthly_income'] * 36, -5)
+        approved_limit=round(data['monthly_income'] * 36, -5),
+        current_debt=round(data['monthly_income'] * 0.3, 2)
     )
+
+    # Save the customer record
     customer.save()
 
     response_data = {
@@ -34,6 +37,7 @@ def register_customer(request):
         "age": customer.age,
         "monthly_income": customer.monthly_salary,
         "approved_limit": customer.approved_limit,
+        "current_debt": customer.current_debt,
         "phone_number": customer.phone_number
     }
 
@@ -174,7 +178,7 @@ def create_loan(request):
         }, status=status.HTTP_400_BAD_REQUEST)
 
     # Calculate EMI
-    monthly_installment = (data['loan_amount'] * (1 + (data['interest_rate'] / 100) * (data['tenure'] / 12))) / data['tenure']
+    monthly_installment = round((data['loan_amount'] * (1 + (data['interest_rate'] / 100) * (data['tenure'] / 12))) / data['tenure'])
 
     # Create the loan record
     start_date = date.today()
