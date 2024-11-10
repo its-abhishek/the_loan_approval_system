@@ -90,7 +90,7 @@ This project is a containerized loan approval system built using Django, Postgre
 
 3. Access the application at `http://localhost:8000`.
 
-## API Endpoints
+## API Endpoints <small>(req, res)</small>
 ### 1. **POST /register/**
 **Request Body**:
 ```json
