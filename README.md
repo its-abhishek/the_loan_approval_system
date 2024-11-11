@@ -97,9 +97,10 @@ This project is a containerized loan approval system built using Django, Postgre
 {
     "first_name": "John",
     "last_name": "Doe",
-    "phone_number": "9743816791",
+    "age": 35,
     "monthly_income": 50000,
-    "age": 35
+    "phone_number": "9743816791",
+
 }
 ```
 
@@ -153,16 +154,11 @@ This project is a containerized loan approval system built using Django, Postgre
 **Response**:
 ```json
 {
-    "loan_id": 1,
-    "customer_id": 1,
-    "loan_approved": true,
-    "message": "Loan approved",
-    "interest_rate": 17.92,
-    "corrected_interest_rate": 17.92,
-    "tenure": 138,
-    "monthly_installment": 7366,
-    "start_date": "2024-11-10",
-    "end_date": "2036-05-10"
+   "loan_id":783,
+   "customer_id":3,
+   "loan_approved":true,
+   "message":"Loan approved",
+   "monthly_installment":10333
 }
 ```
 
@@ -177,7 +173,7 @@ This project is a containerized loan approval system built using Django, Postgre
         "first_name":"Alda",
         "last_name":"Gimenez",
         "phone_number":"9167349806",
-        "age":null
+        "age":21
     },
     "loan_amount":900000.0,
     "interest_rate":13.11,

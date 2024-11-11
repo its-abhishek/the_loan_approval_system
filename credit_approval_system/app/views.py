@@ -116,7 +116,6 @@ def check_eligibility(request):
 
     response_data = {
         "customer_id": customer.customer_id,
-        "credit_score": credit_score,
         "approval": approval,
         "message": "Loan approved" if approval else "Loan not approved based on credit score",
         "interest_rate": data['interest_rate'],
@@ -201,8 +200,6 @@ def create_loan(request):
         "loan_approved": True,
         "message": "Loan approved",
         "monthly_installment": monthly_installment,
-        "start_date": start_date,
-        "end_date": end_date
     }, status=status.HTTP_201_CREATED)
 
 
