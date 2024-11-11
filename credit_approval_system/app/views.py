@@ -10,14 +10,14 @@ from .models import Customer, Loan
 def register_customer(request):
     data = request.data
 
-    # Validate unique phone number
+
     if Customer.objects.filter(phone_number=data['phone_number']).exists():
         return Response(
             {"error": "A customer with this phone number already exists."},
             status=status.HTTP_400_BAD_REQUEST
         )
 
-    # Create new customer with current debt calculation
+
     customer = Customer(
         first_name=data['first_name'],
         last_name=data['last_name'],
@@ -75,10 +75,10 @@ def check_eligibility(request):
     loan_volume = total_loan_amount
 
     # Assign credit score based on criteria
-    credit_score += past_loans_paid_on_time * 10  # Example: 10 points for each on-time loan
-    credit_score += number_of_loans * 5           # Example: 5 points for each loan taken
-    credit_score += current_year_loans * 5        # Example: 5 points for loans in the current year
-    credit_score += min(loan_volume / 10000, 20)  # Example: max 20 points for loan volume
+    credit_score += past_loans_paid_on_time * 10  #10 points for each on-time loan
+    credit_score += number_of_loans * 5           #5 points for each loan taken
+    credit_score += current_year_loans * 5        #5 points for loans in the current year
+    credit_score += min(loan_volume / 10000, 20)  #max 20 points for loan volume
 
     # Check if sum of EMIs exceeds 50% of monthly salary
     total_emis = sum(loan.monthly_repayment for loan in loans)
@@ -129,7 +129,7 @@ def check_eligibility(request):
 @api_view(['POST'])
 def create_loan(request):
     data = request.data
-    print("Received request data:", data)  # Debug: Print incoming request data
+    print("Received request data:", data)
 
     try:
         customer = Customer.objects.get(customer_id=data['customer_id'])
@@ -189,7 +189,7 @@ def create_loan(request):
         tenure=data['tenure'],
         interest_rate=data['interest_rate'],
         monthly_repayment=monthly_installment,
-        emis_paid_on_time=False,  # Assuming default value
+        emis_paid_on_time=False,
         start_date=start_date,
         end_date=end_date
     )

@@ -7,7 +7,7 @@ from datetime import date
 def ingest_customer_data(file_path='data/customer_data.xlsx'):
     """Ingest customer data from an Excel file and estimate current debt."""
     data = pd.read_excel(file_path, engine='openpyxl')
-    print(data.head())  # Debug: Print the first few rows to confirm data is read correctly
+    print(data.head())
 
     for _, row in data.iterrows():
         # Create customer record
@@ -44,7 +44,7 @@ def ingest_loan_data(file_path='data/loan_data.xlsx'):
             tenure=row['Tenure'],
             interest_rate=row['Interest Rate'],
             monthly_repayment=row['Monthly payment'],
-            emis_paid_on_time=row['EMIs paid on Time'],  # Ensure a valid value
+            emis_paid_on_time=row['EMIs paid on Time'],
             start_date=row['Date of Approval'] if pd.notnull(row['Date of Approval']) else None,
             end_date=row['End Date'] if pd.notnull(row['End Date']) else None
         )
