@@ -80,7 +80,7 @@ This project is a containerized loan approval system built using Django, Postgre
 1. Clone the repository:
    ```bash
    git clone https://github.com/its-abhishek/the_loan_approval_system.git
-   cd loan-approval-system
+   cd credit-approval-system
    ```
 
 2. Build and start containers:
