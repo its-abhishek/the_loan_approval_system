@@ -95,11 +95,11 @@ This project is a containerized loan approval system built using Django, Postgre
 **Request Body**:
 ```json
 {
-    "first_name": "John",
-    "last_name": "Doe",
-    "age": 35,
+    "first_name": "Abhishek",
+    "last_name": "Honnapure",
+    "age": 21,
     "monthly_income": 50000,
-    "phone_number": "9743816791",
+    "phone_number": "9019833847",
 
 }
 ```
@@ -108,11 +108,11 @@ This project is a containerized loan approval system built using Django, Postgre
 ```json
 {
     "customer_id":301,
-    "name":"John Doe",
+    "name":"Abhishek",
     "age":35,
     "monthly_income":50000,
     "approved_limit":1800000,
-    "phone_number":"9743816791"
+    "phone_number":"9019833847"
 }
 ```
 
@@ -131,7 +131,6 @@ This project is a containerized loan approval system built using Django, Postgre
 ```json
 {
     "customer_id": 1,
-    "credit_score": 55,
     "approval": true,
     "interest_rate": 15,
     "corrected_interest_rate": 15,
