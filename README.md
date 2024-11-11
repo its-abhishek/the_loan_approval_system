@@ -99,7 +99,7 @@ This project is a containerized loan approval system built using Django, Postgre
     "last_name": "Honnapure",
     "age": 21,
     "monthly_income": 50000,
-    "phone_number": "9019833847",
+    "phone_number": "9019833847"
 
 }
 ```
